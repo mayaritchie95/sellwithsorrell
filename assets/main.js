@@ -17,6 +17,7 @@
   if(io){var bo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bg-in');bo.unobserve(e.target)}})},{rootMargin:'400px'});bgs.forEach(function(el){bo.observe(el)})}
   else bgs.forEach(function(el){el.classList.add('bg-in')});
 
+  function later(){
   // Hero crossfade slider: first image loads with the page, the rest after window load
   var hs=$$('.hero-bg img'), hd=d.querySelector('.hero-dots');
   if(hs.length>1){
@@ -27,10 +28,10 @@
       hi=i; hs.forEach(function(x,j){x.classList.toggle('on',j===i)}); $$('button',hd).forEach(function(b,j){b.classList.toggle('on',j===i)});
       clearTimeout(ht); if(!reduce) ht=setTimeout(function(){hshow((hi+1)%hs.length)},6500);
     }
-    w.addEventListener('load',function(){
+    (function(){
       setTimeout(function(){hs.slice(1).forEach(function(img){if(img.dataset.src){img.srcset=img.dataset.srcset;img.src=img.dataset.src;img.removeAttribute('data-src')}})},1200);
       if(!reduce) ht=setTimeout(function(){hshow(1)},6500);
-    });
+    })();
   }
 
   // Testimonial carousel (horizontal, autoplay, swipe, pause on hover)
@@ -50,6 +51,9 @@
     car.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1));x0=null});
     go(0);
   }
+
+  }
+  if(d.readyState==='complete') setTimeout(later,0); else w.addEventListener('load',function(){setTimeout(later,0)});
 
   // Mortgage calculator (Canadian semi-annual compounding)
   var f=d.getElementById('calc');

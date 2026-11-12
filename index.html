@@ -27,8 +27,9 @@
 <link rel="preload" as="image" href="images/hero.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Lato:ital,wght@1,400;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lato:ital,wght@1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lato:ital,wght@1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/styles.css?v=d958bba5">
 <!-- Google Analytics / Search Console verification: paste tags here -->
 <!-- myRealPage: paste any <script> tag(s) from the embed code window here -->
 <script type="application/ld+json">
@@ -168,7 +169,7 @@
 <header>
   <div class="wrap nav">
     <a href="index.html" class="brand" aria-label="Christian Sorrell, home">
-      <img src="images/logo-cs-gold.png" alt="" width="46" height="46">
+      <span class="badge"><img src="images/logo-cs-96.png" alt="" width="40" height="40"></span>
       <span class="txt"><span class="name">CHRISTIAN SORRELL</span><span class="firm">RE/MAX Niagara Realty Ltd.</span></span>
     </a>
     <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
@@ -176,10 +177,13 @@
   </div>
 </header>
 <main id="main">
-
-
 <!-- ======================= HERO ======================= -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img class="on" src="images/hero.webp" srcset="images/hero-800.webp 800w, images/hero.webp 1200w" sizes="100vw" width="1200" height="800" alt="" fetchpriority="high" decoding="async">
+    <img data-src="images/living-green.webp" data-srcset="images/living-green-800.webp 800w, images/living-green.webp 1200w" sizes="100vw" width="1200" height="633" alt="" decoding="async">
+    <img data-src="images/kitchen.webp" data-srcset="images/kitchen-800.webp 800w, images/kitchen.webp 1200w" sizes="100vw" width="1200" height="800" alt="" decoding="async">
+  </div>
   <div class="wrap">
     <div class="eyebrow">Christian Sorrell &middot; St. Catharines &amp; Niagara Real Estate</div>
     <h1>Your dream home awaits</h1>
@@ -190,12 +194,12 @@
          Replace the whole <form class="qs"> block below with the
          embed code from Listings > WordPress / Embed > Embeddable.
          ============================================================= -->
-    <form class="qs" action="recip.html">
+    <form class="qs" action="recip.html" role="search">
       <div class="tabs">
-        <button type="button" class="on" onclick="qsTab(this)">ACTIVE</button>
-        <button type="button" onclick="qsTab(this)">SOLD</button>
+        <button type="button" class="on">ACTIVE</button>
+        <button type="button">SOLD</button>
       </div>
-      <input type="text" name="q" placeholder="City, neighbourhood, address or MLS®#">
+      <input type="text" name="q" placeholder="City, neighbourhood, address or MLS®#" aria-label="Search location">
       <select name="price" aria-label="Price">
         <option value="">Any price</option>
         <option>Under $500,000</option>
@@ -206,13 +210,14 @@
       <button class="go" type="submit">SEARCH</button>
     </form>
   </div>
+  <div class="hero-dots"></div>
 </section>
 
 <!-- ======================= ABOUT ======================= -->
 <section id="about">
   <div class="wrap about-grid">
     <div class="portrait">
-      <img src="images/christian-headshot.webp" alt="Christian Sorrell, Niagara real estate agent with RE/MAX Niagara Realty" width="792" height="1188">
+      <img src="images/christian-headshot.webp" alt="Christian Sorrell, Niagara real estate agent with RE/MAX Niagara Realty" width="792" height="1188" loading="lazy" decoding="async">
     </div>
     <div class="about-copy">
       <div class="eyebrow">Your Niagara Real Estate Agent</div>
@@ -221,15 +226,7 @@
       <p>Buying or selling a home is one of the biggest financial decisions you'll make, and you deserve to understand every step of it. My approach is simple: explain the process clearly, show you what the numbers are really saying, and make sure you never feel rushed or left in the dark.</p>
       <p>With a background in real estate investing, I look at every property through two lenses: how it fits your life today, and how it's likely to perform over time. That perspective helps my clients across St. Catharines and the Niagara region spot real value, avoid costly surprises and negotiate with confidence.</p>
       <p>You'll always get honest advice and realistic expectations from me, even when it isn't what you want to hear. I'm in this for long-term relationships, so I'm still here after closing day whenever you have a question about the market or your next move.</p>
-
-      <div class="socials">
-        <a href="blog.html" aria-label="Blog"><svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 4h16v2H4zm0 4h10v2H4zm0 4h16v2H4z"/></svg></a>
-        <a href="https://www.instagram.com/sellwithsorrell" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.3 5.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/><path d="M16 2H8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zm4.2 14A4.2 4.2 0 0116 20.2H8A4.2 4.2 0 013.8 16V8A4.2 4.2 0 018 3.8h8A4.2 4.2 0 0120.2 8z"/></svg></a>
-        <a href="https://www.youtube.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 00-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 001 7.2 31 31 0 00.5 12a31 31 0 00.5 4.8 3 3 0 002.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 002.1-2.1 31 31 0 00.5-4.8 31 31 0 00-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></a>
-        <a href="https://www.tiktok.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 11-2.9-2.9c.3 0 .6 0 .8.1V9.2a6.2 6.2 0 105.4 6.2V8.6a7.9 7.9 0 004.5 1.4V6.7a4.6 4.6 0 01-4.5-4.7z"/></svg></a>
-        <a href="https://www.linkedin.com/in/christian-sorrell-00900523b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6v5.5h-4v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5H9.5z"/></svg></a>
-        <a href="#GOOGLE-MAPS-LINK" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg></a>
-      </div>
+      <div class="socials"><a href="https://www.instagram.com/sellwithsorrell" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.3 5.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/><path d="M16 2H8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zm4.2 14A4.2 4.2 0 0116 20.2H8A4.2 4.2 0 013.8 16V8A4.2 4.2 0 018 3.8h8A4.2 4.2 0 0120.2 8z"/></svg></a><a href="https://www.youtube.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 00-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 001 7.2 31 31 0 00.5 12a31 31 0 00.5 4.8 3 3 0 002.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 002.1-2.1 31 31 0 00.5-4.8 31 31 0 00-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></a><a href="https://www.tiktok.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 11-2.9-2.9c.3 0 .6 0 .8.1V9.2a6.2 6.2 0 105.4 6.2V8.6a7.9 7.9 0 004.5 1.4V6.7a4.6 4.6 0 01-4.5-4.7z"/></svg></a><a href="https://www.linkedin.com/in/christian-sorrell-00900523b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6v5.5h-4v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5H9.5z"/></svg></a></div>
       <a href="about.html" class="btn">More about me</a>
     </div>
   </div>
@@ -246,12 +243,10 @@
       </div>
       <a href="mylistings.html" class="btn">View all my listings</a>
     </div>
-
     <!-- =============================================================
          myRealPage EMBED: "My Listings" (or a Listings Showcase)
          Replace this .embed-slot div with the embed code from
          Listings > WordPress / Embed > Embeddable > My Listings.
-         Listings will then update automatically from PropTx.
          ============================================================= -->
     <div class="embed-slot">
       <strong>myRealPage "My Listings" embed goes here</strong>
@@ -263,24 +258,12 @@
 <!-- ======================= FIND YOUR DREAM HOME ======================= -->
 <section class="dark" id="cities">
   <div class="wrap cities-grid">
-    <div class="cities-img" role="img" aria-label="Bright modern staircase"></div>
+    <div class="cities-img"><img src="images/staircase.webp" width="700" height="1050" alt="Bright modern staircase in a Niagara home" loading="lazy" decoding="async"></div>
     <div>
       <div class="eyebrow">Start now</div>
       <h2>Find your dream home</h2>
       <p class="lead">Browse homes for sale in communities across Niagara and beyond.</p>
-      
-      <div class="cities">
-        <a class="city" href="homes-for-sale-st-catharines.html">St. Catharines</a>
-        <a class="city" href="homes-for-sale-niagara-falls.html">Niagara Falls</a>
-        <a class="city" href="homes-for-sale-thorold.html">Thorold</a>
-        <a class="city" href="homes-for-sale-welland.html">Welland</a>
-        <a class="city" href="homes-for-sale-port-colborne.html">Port Colborne</a>
-        <a class="city" href="homes-for-sale-fort-erie.html">Fort Erie</a>
-        <a class="city" href="homes-for-sale-pelham.html">Pelham</a>
-        <a class="city" href="homes-for-sale-hamilton.html">Hamilton</a>
-        <a class="city" href="homes-for-sale-grimsby.html">Grimsby</a>
-        <a class="city" href="homes-for-sale-lincoln.html">Lincoln</a>
-      </div>
+      <div class="cities"><a class="city" href="homes-for-sale-st-catharines.html">St. Catharines</a><a class="city" href="homes-for-sale-niagara-falls.html">Niagara Falls</a><a class="city" href="homes-for-sale-thorold.html">Thorold</a><a class="city" href="homes-for-sale-welland.html">Welland</a><a class="city" href="homes-for-sale-port-colborne.html">Port Colborne</a><a class="city" href="homes-for-sale-fort-erie.html">Fort Erie</a><a class="city" href="homes-for-sale-pelham.html">Pelham</a><a class="city" href="homes-for-sale-hamilton.html">Hamilton</a><a class="city" href="homes-for-sale-grimsby.html">Grimsby</a><a class="city" href="homes-for-sale-lincoln.html">Lincoln</a></div>
       <div class="tools">
         <a class="btn" href="recip.html">Custom Search</a>
         <a class="btn" href="map-search.html">Map Search</a>
@@ -290,53 +273,16 @@
 </section>
 
 <!-- ======================= TESTIMONIALS ======================= -->
-<section class="testimonials" id="testimonials">
+<section class="testimonials" id="testimonials" data-lazybg>
   <div class="wrap center">
     <div class="eyebrow">What they say</div>
     <h2>Client Testimonials</h2>
   </div>
   <div class="wrap">
-    <div class="slider" id="slider">
-      <div class="slide on">
-        <img width="1200" height="900" src="images/testimonial-shane.webp" alt="">
-        <div class="panel">
-          <div class="mark">&ldquo;</div>
-          <blockquote>Christian was amazing helping my wife and I find our apartment. Answered all of our questions, dealt with my many emails back and forth clarifying anything I had questions about. Was quick to respond and helped make this an easy process in getting our place. Would definitely recommend him for anyone looking for a new place.</blockquote>
-          <cite>Shane DeBon</cite>
-          <div><a class="glink" href="testimonials.html">More testimonials</a></div>
-        </div>
-      </div>
-      <div class="slide">
-        <img width="1200" height="900" src="images/testimonial-alexander.webp" alt="" loading="lazy">
-        <div class="panel">
-          <div class="mark">&ldquo;</div>
-          <blockquote>Christian was very helpful in helping me with obtaining a new place. Very straightforward, quick to action emails, and friendly guy overall.</blockquote>
-          <cite>Alexander Miller</cite>
-          <div><a class="glink" href="testimonials.html">More testimonials</a></div>
-        </div>
-      </div>
-      <div class="slide">
-        <img width="1200" height="900" src="images/testimonial-michaela.webp" alt="" loading="lazy">
-        <div class="panel">
-          <div class="mark">&ldquo;</div>
-          <blockquote>Working with Christian was a positive experience, he was helpful and answered any and all questions in a respectful and professional manner.</blockquote>
-          <cite>Michaela Goodfield</cite>
-          <div><a class="glink" href="testimonials.html">More testimonials</a></div>
-        </div>
-      </div>
-      <div class="slide">
-        <img width="1200" height="900" src="images/testimonial-murtaza.webp" alt="" loading="lazy">
-        <div class="panel">
-          <div class="mark">&ldquo;</div>
-          <blockquote>I highly recommend Christian, it was great to work with him, very approachable and communicated effectively with us as well as the potential tenants. He did an amazing job in finding us a tenant, he made sure that we get the perfect tenant and went thoroughly through the process.</blockquote>
-          <cite>Murtaza Mohamedbhai</cite>
-          <div><a class="glink" href="testimonials.html">More testimonials</a></div>
-        </div>
-      </div>
-      <div class="arrows">
-        <button type="button" aria-label="Previous testimonial" onclick="go(-1)">&#8593;</button>
-        <button type="button" aria-label="Next testimonial" onclick="go(1)">&#8595;</button>
-      </div>
+    <div class="tcar" aria-roledescription="carousel" aria-label="Client testimonials">
+      <div class="tview"><div class="ttrack"><article class="tslide"><div class="timg"><img src="images/testimonial-shane.webp" width="700" height="1050" alt="" loading="lazy" decoding="async"></div><div class="ttext"><div class="mark">&ldquo;</div><blockquote>Christian was amazing helping my wife and I find our apartment. Answered all of our questions, dealt with my many emails back and forth clarifying anything I had questions about. Was quick to respond and helped make this an easy process in getting our place. Would definitely recommend him for anyone looking for a new place.</blockquote><cite>Shane DeBon</cite><div><a class="glink" href="testimonials.html">More testimonials</a></div></div></article><article class="tslide"><div class="timg"><img src="images/testimonial-alexander.webp" width="700" height="525" alt="" loading="lazy" decoding="async"></div><div class="ttext"><div class="mark">&ldquo;</div><blockquote>Christian was very helpful in helping me with obtaining a new place. Very straightforward, quick to action emails, and friendly guy overall.</blockquote><cite>Alexander Miller</cite><div><a class="glink" href="testimonials.html">More testimonials</a></div></div></article><article class="tslide"><div class="timg"><img src="images/testimonial-michaela.webp" width="700" height="1050" alt="" loading="lazy" decoding="async"></div><div class="ttext"><div class="mark">&ldquo;</div><blockquote>Working with Christian was a positive experience, he was helpful and answered any and all questions in a respectful and professional manner.</blockquote><cite>Michaela Goodfield</cite><div><a class="glink" href="testimonials.html">More testimonials</a></div></div></article><article class="tslide"><div class="timg"><img src="images/testimonial-murtaza.webp" width="700" height="466" alt="" loading="lazy" decoding="async"></div><div class="ttext"><div class="mark">&ldquo;</div><blockquote>I highly recommend Christian, it was great to work with him, very approachable and communicated effectively with us as well as the potential tenants. He did an amazing job in finding us a tenant, he made sure that we get the perfect tenant and went thoroughly through the process.</blockquote><cite>Murtaza Mohamedbhai</cite><div><a class="glink" href="testimonials.html">More testimonials</a></div></div></article></div></div>
+      <button type="button" class="tnav prev" aria-label="Previous testimonial">&#8592;</button>
+      <button type="button" class="tnav next" aria-label="Next testimonial">&#8594;</button>
     </div>
     <div class="dots" id="dots"></div>
   </div>
@@ -346,35 +292,26 @@
 <section id="paths">
   <div class="wrap">
     <div class="cards3">
-      <a class="card3" href="buying.html">
-        <div class="img" style="background-image:url('images/card-buyers.webp')"></div>
-        <div class="txt"><h3>For buyers</h3><span class="glink">Buying resources</span></div>
-      </a>
-      <a class="card3" href="selling.html">
-        <div class="img" style="background-image:url('images/card-sellers.webp')"></div>
-        <div class="txt"><h3>For sellers</h3><span class="glink">Selling resources</span></div>
-      </a>
-      <a class="card3" href="recip.html">
-        <div class="img" style="background-image:url('images/card-search.webp')"></div>
-        <div class="txt"><h3>Home search</h3><span class="glink">Start searching</span></div>
-      </a>
+      <a class="card3" href="buying.html"><div class="img"><img src="images/card-buyers.webp" width="638" height="286" alt="Bright living room with built-in shelving" loading="lazy" decoding="async"></div><div class="txt"><h3>For buyers</h3><span class="glink">Buying resources</span></div></a>
+      <a class="card3" href="selling.html"><div class="img"><img src="images/card-sellers.webp" width="638" height="286" alt="Leather sofa in a warmly lit living room" loading="lazy" decoding="async"></div><div class="txt"><h3>For sellers</h3><span class="glink">Selling resources</span></div></a>
+      <a class="card3" href="recip.html"><div class="img"><img src="images/card-search.webp" width="638" height="286" alt="Staged living room with modern artwork" loading="lazy" decoding="async"></div><div class="txt"><h3>Home search</h3><span class="glink">Start searching</span></div></a>
     </div>
   </div>
 </section>
 
 <!-- ======================= RESOURCES ======================= -->
-<section class="dark resources" id="resources">
+<section class="dark resources" id="resources" data-lazybg>
   <div class="wrap center">
     <div class="eyebrow">At your service</div>
     <h2>Helpful real estate resources</h2>
   </div>
   <div class="wrap">
     <div class="res">
-      <a href="recip.html?showsignup"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg><span>Alerts</span></a>
-      <a href="mortgage-calculator.html"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h2M14 11h2M8 15h2M14 15h2M8 19h2M14 19h2"/></svg><span>Mortgage Calculator</span></a>
-      <a href="home-evaluation.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg><span>Home Evaluation</span></a>
-      <a href="recip.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg><span>Home Search</span></a>
-      <a href="blog.html"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg><span>Blog</span></a>
+      <a href="watch-list.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></span><span class="t">Listing alerts</span><span class="d">New listings straight to your inbox</span></a>
+      <a href="mortgage-calculator.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18.5h.01M12 18.5h.01M16 18.5h.01"/></svg></span><span class="t">Mortgage calculator</span><span class="d">Estimate your payments</span></a>
+      <a href="home-evaluation.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span><span class="t">Home evaluation</span><span class="d">Find out what your home is worth</span></a>
+      <a href="recip.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></span><span class="t">Home search</span><span class="d">Browse every MLS&reg; listing</span></a>
+      <a href="blog.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></span><span class="t">Blog</span><span class="d">Tips and Niagara market insight</span></a>
     </div>
   </div>
 </section>
@@ -382,8 +319,8 @@
 <!-- ======================= CTA ======================= -->
 <section class="cta dark">
   <div class="cta-grid">
-    <div class="cta-img" role="img" aria-label="Christian Sorrell"></div>
-    <div class="cta-copy">
+    <div class="cta-img"><img src="images/christian-headshot.webp" width="792" height="1188" alt="Christian Sorrell" loading="lazy" decoding="async"></div>
+    <div class="cta-copy" data-lazybg>
       <div class="eyebrow">Let's talk</div>
       <h2>I look forward to building a relationship with you!</h2>
       <div><a href="contact.html" class="btn btn-gold">Let's Connect</a></div>
@@ -391,13 +328,12 @@
   </div>
 </section>
 
-
 </main>
 <footer>
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img class="remax" src="images/logo-cs-gold.png" alt="Christian Sorrell logo" width="56" height="56">
+        <span class="badge"><img src="images/logo-cs-96.png" alt="Christian Sorrell logo" width="46" height="46" loading="lazy"></span>
         <h4>Christian Sorrell</h4>
         <p>REALTOR&reg;<br>RE/MAX Niagara Realty Ltd., Brokerage</p>
         <div class="socials"><a href="https://www.instagram.com/sellwithsorrell" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.3 5.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/><path d="M16 2H8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zm4.2 14A4.2 4.2 0 0116 20.2H8A4.2 4.2 0 013.8 16V8A4.2 4.2 0 018 3.8h8A4.2 4.2 0 0120.2 8z"/></svg></a><a href="https://www.youtube.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 00-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 001 7.2 31 31 0 00.5 12a31 31 0 00.5 4.8 3 3 0 002.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 002.1-2.1 31 31 0 00.5-4.8 31 31 0 00-.5-4.8zM9.7 15V9l5.8 3-5.8 3z"/></svg></a><a href="https://www.tiktok.com/@sellwithsorrell" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 11-2.9-2.9c.3 0 .6 0 .8.1V9.2a6.2 6.2 0 105.4 6.2V8.6a7.9 7.9 0 004.5 1.4V6.7a4.6 4.6 0 01-4.5-4.7z"/></svg></a><a href="https://www.linkedin.com/in/christian-sorrell-00900523b" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.5h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6v5.5h-4v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5H9.5z"/></svg></a></div>
@@ -424,6 +360,6 @@
     </div>
   </div>
 </footer>
-<script src="assets/main.js" defer></script>
+<script src="assets/main.js?v=d958bba5" defer></script>
 </body>
 </html>

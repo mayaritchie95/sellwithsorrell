@@ -17,18 +17,6 @@
   if(io){var bo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bg-in');bo.unobserve(e.target)}})},{rootMargin:'400px'});bgs.forEach(function(el){bo.observe(el)})}
   else bgs.forEach(function(el){el.classList.add('bg-in')});
 
-  if(io&&!reduce){
-    var sel='main section h2,main .lead,.about-copy p,.portrait,.cities-img,.city,.tcar,.card3,.res a,.icard,.step,.faq details,.tbox,.post,.city-tiles a,.embed-slot,.calc-out,.sidebar,.cta-copy>*';
-    var vh=w.innerHeight, groups=new Map();
-    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
-    $$(sel).forEach(function(el){
-      if(el.getBoundingClientRect().top<vh) return;       // never hide what's already on screen
-      var p=el.parentNode, n=groups.get(p)||0; groups.set(p,n+1);
-      el.style.transitionDelay=Math.min(n,6)*70+'ms';
-      el.classList.add('rv'); ro.observe(el);
-    });
-  }
-
   // Hero crossfade slider: first image loads with the page, the rest after window load
   var hs=$$('.hero-bg img'), hd=d.querySelector('.hero-dots');
   if(hs.length>1){

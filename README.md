@@ -12,6 +12,8 @@ _build/scripts/new_post.py writes a new post with the Claude API
 `_build`, `.github` and this README are excluded from the live site by `.vercelignore`.
 
 ## Weekly blog posts
+Upcoming topics are listed in `_build/topics.txt`, used in order (one per week). Edit that file to reorder or change them.
+
 Every Thursday, GitHub Actions asks Claude for a new SEO post on a topic not covered yet, checks it
 (length, headings, internal links only, no scripts, no duplicate topic), rebuilds the site and pushes.
 Vercel then publishes it.

@@ -1,0 +1,16 @@
+# Upcoming blog topics, used in order, one per Thursday.
+# Edit freely: reorder, remove or add lines. Lines starting with # are ignored.
+# A topic is skipped once a post has been written for it. When the list runs out,
+# Claude picks a new topic that the blog hasn't covered yet.
+Selling a Home in Winter in Niagara: What to Know
+How to Choose a Real Estate Agent in St. Catharines
+Buying a Condo vs a House in Niagara
+Downsizing in Niagara: A Guide for Empty Nesters
+What Happens After Your Offer Is Accepted
+Year-End Checklist for Niagara Homeowners
+Setting Real Estate Goals for the New Year
+Adding a Basement Suite: What Investors Should Consider
+How to Read a Property Listing Like a Pro
+Buying a Home Near Brock University: Tips for Investors
+Moving to Niagara from the GTA: What to Expect
+Questions to Ask Before Buying a Rural Property

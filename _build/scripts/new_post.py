@@ -37,15 +37,37 @@ def existing():
     return out
 
 
-def prompt(prev):
+TOPICS = os.path.join(ROOT, 'topics.txt')
+
+
+def next_topic(prev):
+    """First topic in topics.txt that no post has been written for yet (or None)."""
+    if not os.path.exists(TOPICS):
+        return None
+    done = {p.get('topic', '').strip().lower() for p in prev}
+    for line in open(TOPICS, encoding='utf-8'):
+        t = line.strip()
+        if t and not t.startswith('#') and t.lower() not in done:
+            return t
+    return None
+
+
+def prompt(prev, topic=None):
     titles = '\n'.join(f'- {p["title"]}' for p in prev)
     links = '\n'.join(f'- {k} ({v})' for k, v in LINKS.items())
+    if topic:
+        topic_line = (f'Write ONE new evergreen blog post on this topic: "{topic}". Keep the title close to it '
+                      '(you may adjust wording for search). Aim it at a local real estate search phrase.')
+    else:
+        topic_line = ('Write ONE new evergreen blog post that will help the site rank in Google for a local real estate '
+                      'search phrase (for example a "how to", checklist, guide or comparison aimed at Niagara buyers, '
+                      'sellers, landlords or people moving to the area).')
     return f"""You write blog posts for the website of Christian Sorrell, a REALTOR® with RE/MAX Niagara Realty Ltd. in St. Catharines, Ontario, serving the Niagara region and Hamilton.
 
-Write ONE new evergreen blog post that will help the site rank in Google for a local real estate search phrase (for example a "how to", checklist, guide or comparison aimed at Niagara buyers, sellers, landlords or people moving to the area).
+{topic_line}
 
 Rules:
-- Pick a topic clearly different from these existing posts:
+- It must be clearly different from these existing posts:
 {titles}
 - 600-800 words, friendly and professional, written in Christian's first person where natural ("I", "my clients").
 - Use the main keyword phrase naturally in the title, first paragraph and one H2. Include "Niagara" or a Niagara city where it fits.
@@ -109,7 +131,10 @@ class Clean(HTMLParser):
 
 def main():
     prev = existing()
-    raw = call_claude(prompt(prev))
+    topic = next_topic(prev)
+    if topic:
+        print(f'Topic from queue: {topic}')
+    raw = call_claude(prompt(prev, topic))
     m = re.search(r'\{.*\}', raw, re.S)
     if not m: sys.exit('No JSON in response')
     post = json.loads(m.group(0))
@@ -137,7 +162,7 @@ def main():
     used = [p['image'] for p in prev]
     image = min(IMAGES, key=lambda i: (used.count(i), IMAGES.index(i)))
     date = datetime.date.today().isoformat()
-    out = {'slug': slug, 'title': html.escape(title, quote=False), 'image': image, 'category': category,
+    out = {'topic': topic or '', 'slug': slug, 'title': html.escape(title, quote=False), 'image': image, 'category': category,
            'excerpt': html.escape(excerpt, quote=False), 'date': date,
            'content': content + '<p><em>This article is general information, not legal, tax or financial advice.</em></p>'}
     path = os.path.join(POSTS, f'{date}-{slug[:-5]}.json')

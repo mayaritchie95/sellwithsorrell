@@ -25,7 +25,7 @@ jobs:
       - name: Write a new post with Claude
         id: write
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.SELL_WITH_SORRELL_BLOGS || secrets.ANTHROPIC_API_KEY }}
         run: |
           ok=0
           for i in 1 2 3; do

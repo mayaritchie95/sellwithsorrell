@@ -17,7 +17,7 @@ Every Thursday, GitHub Actions asks Claude for a new SEO post on a topic not cov
 Vercel then publishes it.
 
 **One-time setup:** create an API key at console.anthropic.com, then in this repo go to
-Settings → Secrets and variables → Actions → New repository secret, name it `ANTHROPIC_API_KEY`.
+Settings → Secrets and variables → Actions → New repository secret, name it `SELL_WITH_SORRELL_BLOGS` (or `ANTHROPIC_API_KEY`).
 Test it from Actions → *Weekly blog post* → **Run workflow**.
 
 To remove a post: delete its file in `_build/posts/` and the matching `blog-….html`, then run

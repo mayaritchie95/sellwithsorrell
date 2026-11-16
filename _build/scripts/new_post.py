@@ -8,7 +8,7 @@ Saves posts/YYYY-MM-DD-<slug>.json. Then source/build.py turns it into a page,
 adds it to the blog index and sitemap. Nothing is published unless the post
 passes the checks below.
 """
-import datetime, html, json, os, re, sys, urllib.request
+import datetime, html, json, os, re, sys, urllib.request, urllib.error
 from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,15 +69,18 @@ def call_claude(text):
     mock = os.environ.get('NEW_POST_MOCK_FILE')
     if mock:
         return open(mock).read()
-    key = os.environ.get('ANTHROPIC_API_KEY')
+    key = (os.environ.get('ANTHROPIC_API_KEY') or '').strip()  # ignore stray spaces/newlines from pasting
     if not key:
         sys.exit('ANTHROPIC_API_KEY is not set')
     req = urllib.request.Request('https://api.anthropic.com/v1/messages', method='POST',
         headers={'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json'},
         data=json.dumps({'model': MODEL, 'max_tokens': 4000,
                          'messages': [{'role': 'user', 'content': text}]}).encode())
-    with urllib.request.urlopen(req, timeout=180) as r:
-        data = json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            data = json.load(r)
+    except urllib.error.HTTPError as e:
+        sys.exit(f'Claude API error {e.code}: {e.read().decode(errors="replace")[:300]}')
     return ''.join(b.get('text', '') for b in data['content'])
 
 

@@ -1,0 +1,47 @@
+name: Weekly blog post
+
+on:
+  schedule:
+    - cron: '17 13 * * 4'   # Thursdays 13:17 UTC (about 8-9 a.m. Toronto)
+  workflow_dispatch: {}     # "Run workflow" button for a post on demand
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-blog
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Write a new post with Claude
+        id: write
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ok=0
+          for i in 1 2 3; do
+            if python3 _build/scripts/new_post.py; then ok=1; break; fi
+            echo "Attempt $i rejected, retrying"; sleep 20
+          done
+          [ "$ok" = 1 ] || { echo "No post passed the checks this week"; exit 1; }
+
+      - name: Rebuild the site
+        run: python3 _build/source/build.py
+
+      - name: Commit and push (Vercel publishes automatically)
+        run: |
+          git config user.name "blog-bot"
+          git config user.email "blog-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "Nothing new" && exit 0
+          git commit -m "Weekly blog post: ${{ steps.write.outputs.title }}"
+          git push
